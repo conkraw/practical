@@ -18,6 +18,7 @@ def generate_document(student_name, code, exam_number):
     run = paragraph.add_run(f'Pediatric Clerkship Practical Examination #{exam_number}')
     run.bold = True
     run.font.all_caps = True  # This will display the text in all uppercase
+    run.underline = True  
         
     # Add a paragraph with the student's legal name (with the name in bold)
     paragraph = doc.add_paragraph()
@@ -27,8 +28,10 @@ def generate_document(student_name, code, exam_number):
 
     # Add access instructions heading
     paragraph = doc.add_paragraph()
-    run = paragraph.add_run("Practical Examination Access Instructions: ")
+    paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = paragraph.add_run("Practical Examination Access Instructions")
     run.bold = True
+    run.underline = True
     
     # Add website access instruction
     doc.add_paragraph("1. Please first enter the following website: https://redcap.ctsi.psu.edu/surveys")
@@ -61,9 +64,10 @@ def generate_document(student_name, code, exam_number):
     
     # Add access instructions heading
     paragraph = doc.add_paragraph()
-    run = paragraph.add_run("Practical Examination Test Taking Instructions: ")
+    paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = paragraph.add_run("Practical Examination Test Taking Instructions")
     run.bold = True
-    
+    run.underline = True
     doc.add_paragraph(instructions)
     
     return doc
