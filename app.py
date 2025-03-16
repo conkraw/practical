@@ -7,6 +7,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx import Document
 from docx.shared import Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.shared import Pt
 
 
 def generate_document(student_name, code, exam_number):
@@ -71,7 +72,8 @@ def generate_document(student_name, code, exam_number):
         "All essential resources, including immunization schedules and pharmacologic references, will be provided to assist you in formulating your responses. "
         "While you are welcome to take notes during the assessment, please note that these notes cannot be taken out of the exam room.\n\n"
     )
-    doc.add_paragraph(intro_text)
+    intro_paragraph = doc.add_paragraph(intro_text)
+    intro_paragraph.paragraph_format.space_after = Pt(0)
     
     # Add "Learning Objectives" and the remaining instructions in one paragraph
     paragraph = doc.add_paragraph()
