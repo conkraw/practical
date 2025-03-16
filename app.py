@@ -15,7 +15,7 @@ def generate_document(student_name, code_p1, code_p2):
     # Optionally add a paragraph that shows the student's legal name
     paragraph = doc.add_paragraph()
     paragraph.add_run("Student Name: ")
-    run = paragraph.add_run(student_name)
+    run = paragraph.add_run(str(student_name))
     run.bold = True
     
     # Add the main instructions text
