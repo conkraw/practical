@@ -70,7 +70,7 @@ def generate_document(student_name, code, exam_number):
         "in order to proceed through the examination. Ensure that you fill in all required fields before moving forward (unless otherwise specified). "
         "The purpose of this summative assessment is to evaluate your ability to synthesize data, interpret findings, and apply critical thinking in clinical decision-making.\n\n"
         "All essential resources, including immunization schedules and pharmacologic references, will be provided to assist you in formulating your responses. "
-        "While you are welcome to take notes during the assessment, please note that these notes cannot be taken out of the exam room."
+        "While you are welcome to take notes during the assessment, please note that these notes cannot be taken out of the exam room.\n"
     )
     intro_paragraph = doc.add_paragraph(intro_text)
     intro_paragraph.paragraph_format.space_before = Pt(0)
