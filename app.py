@@ -18,6 +18,20 @@ def generate_document(student_name, code, exam_number):
     paragraph.add_run("Student Name: ")
     run = paragraph.add_run(str(student_name))
     run.bold = True
+
+    # Add access instructions heading
+    paragraph = doc.add_paragraph()
+    run = paragraph.add_run("Practical Examination Access Instructions: ")
+    run.bold = True
+    
+    # Add website access instruction
+    doc.add_paragraph("1. Please first enter the following website: https://redcap.ctsi.psu.edu/surveys")
+    
+    # Add code entry instruction with the code in bold
+    paragraph = doc.add_paragraph()
+    paragraph.add_run("2. Please enter the following code ")
+    run = paragraph.add_run(str(code))
+    run.bold = True
     
     # Add the main instructions text (common for both exams)
     instructions = (
@@ -39,20 +53,6 @@ def generate_document(student_name, code, exam_number):
         "Good luck, and let this be an opportunity to demonstrate the knowledge, skills, and professionalism you have cultivated throughout your clerkship."
     )
     doc.add_paragraph(instructions)
-    
-    # Add access instructions heading
-    paragraph = doc.add_paragraph()
-    run = paragraph.add_run("Practical Examination Access Instructions: ")
-    run.bold = True
-    
-    # Add website access instruction
-    doc.add_paragraph("1. Please first enter the following website: https://redcap.ctsi.psu.edu/surveys")
-    
-    # Add code entry instruction with the code in bold
-    paragraph = doc.add_paragraph()
-    paragraph.add_run("2. Please enter the following code ")
-    run = paragraph.add_run(str(code))
-    run.bold = True
     
     return doc
 
