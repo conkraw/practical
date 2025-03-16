@@ -52,7 +52,7 @@ if uploaded_file is not None:
     with zipfile.ZipFile(zip_buffer, "a", zipfile.ZIP_DEFLATED, False) as zip_file:
         # Process each row in the dataset
         for index, row in df.iterrows():
-            student_name = row['student legal name']
+            student_name = row['legal_name']
             code_p1 = row['code_p1']
             code_p2 = row['code_p2']
             
