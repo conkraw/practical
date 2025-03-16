@@ -73,10 +73,13 @@ def generate_document(student_name, code, exam_number):
         "While you are welcome to take notes during the assessment, please note that these notes cannot be taken out of the exam room.\n\n"
     )
     intro_paragraph = doc.add_paragraph(intro_text)
+    intro_paragraph.paragraph_format.space_before = Pt(0)
     intro_paragraph.paragraph_format.space_after = Pt(0)
     
     # Add "Learning Objectives" and the remaining instructions in one paragraph
     paragraph = doc.add_paragraph()
+    paragraph.paragraph_format.space_before = Pt(0)
+    paragraph.paragraph_format.space_after = Pt(0)
     run_title = paragraph.add_run("Learning Objectives")
     run_title.bold = True
     run_title.add_break()  # Inserts a line break without creating an extra paragraph
