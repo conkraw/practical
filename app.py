@@ -73,22 +73,20 @@ def generate_document(student_name, code, exam_number):
     )
     doc.add_paragraph(intro_text)
     
-    # Add "Learning Objectives" in bold as its own paragraph
-    learning_obj_paragraph = doc.add_paragraph()
-    lo_run = learning_obj_paragraph.add_run("Learning Objectives")
-    lo_run.bold = True
-    
-    # Add the remaining instructions text
-    remaining_text = (
-        "\nUpon achieving an acceptable score on this examination, you will have demonstrated the following key learning objectives of the Pediatric Clerkship Course:\n\n"
+    # Add "Learning Objectives" and the remaining instructions in one paragraph
+    paragraph = doc.add_paragraph()
+    run_title = paragraph.add_run("Learning Objectives")
+    run_title.bold = True
+    run_title.add_break()  # Inserts a line break without creating an extra paragraph
+    run_remaining = paragraph.add_run(
+        "Upon achieving an acceptable score on this examination, you will have demonstrated the following key learning objectives of the Pediatric Clerkship Course:\n\n"
         "• Obtain, synthesize, and interpret comprehensive medical histories for newborns, children, and adolescents in various clinical settings. (Patient Care 1.1, EPA 1)\n"
         "• Create an assessment, problem list, differential diagnosis, and management plan for common pediatric complaints. (Patient Care 1.2, EPA 2)\n"
         "• Integrate and adapt knowledge of growth and development to develop individualized pediatric care strategies that address physical, emotional, and psychosocial needs. (Patient Care 1.2)\n"
         "• Analyze social determinants of health, evaluate their impact on pediatric health outcomes, and formulate a plan to address these needs effectively. (Health Humanities 7.1, Systems Based Practice 6.4)\n\n"
         "Good luck, and let this be an opportunity to demonstrate the knowledge, skills, and professionalism you have cultivated throughout your clerkship."
     )
-    doc.add_paragraph(remaining_text)
-    
+        
     return doc
 
 st.title("Pediatric Clerkship Practical Examination Document Generator")
