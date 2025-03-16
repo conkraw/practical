@@ -3,6 +3,7 @@ import pandas as pd
 from docx import Document
 import io
 import zipfile
+from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 def generate_document(student_name, code, exam_number):
     """
@@ -11,8 +12,9 @@ def generate_document(student_name, code, exam_number):
     doc = Document()
     
     # Add heading for the specific practical examination
-    doc.add_heading(f'Pediatric Clerkship Practical Examination #{exam_number}', level=1)
-    
+    heading = doc.add_heading(f'Pediatric Clerkship Practical Examination #{exam_number}', level=1)
+    heading.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        
     # Add a paragraph with the student's legal name (with the name in bold)
     paragraph = doc.add_paragraph()
     paragraph.add_run("Student Name: ")
