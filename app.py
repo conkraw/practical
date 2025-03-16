@@ -4,12 +4,21 @@ from docx import Document
 import io
 import zipfile
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx import Document
+from docx.shared import Pt
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+
 
 def generate_document(student_name, code, exam_number):
     """
     Generate a Word document for a given exam number.
     """
     doc = Document()
+
+    style = doc.styles['Normal']
+    font = style.font
+    font.name = 'Times New Roman'
+    font.size = Pt(11)
     
     # Add heading for the specific practical examination
     
