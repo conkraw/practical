@@ -50,9 +50,17 @@ def generate_document(student_name, code, exam_number):
     paragraph.add_run("2. Please enter the following code ")
     run = paragraph.add_run(str(code))
     run.bold = True
+
+    # Add access instructions heading
+    paragraph = doc.add_paragraph()
+    paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = paragraph.add_run("Practical Examination Test Taking Instructions")
+    run.bold = True
+    run.underline = True
     
     # Add the main instructions text (common for both exams)
-    instructions = (
+    # Add the introductory instructions
+    intro_text = (
         "Welcome to the Pediatric Clerkship Practical Examination!\n\n"
         "This examination provides a unique opportunity to demonstrate your skills in biomedical knowledge, clinical reasoning, "
         "and systems-based thinking as you engage with simulated cases involving undifferentiated pediatric patients.\n\n"
@@ -62,22 +70,24 @@ def generate_document(student_name, code, exam_number):
         "The purpose of this summative assessment is to evaluate your ability to synthesize data, interpret findings, and apply critical thinking in clinical decision-making.\n\n"
         "All essential resources, including immunization schedules and pharmacologic references, will be provided to assist you in formulating your responses. "
         "While you are welcome to take notes during the assessment, please note that these notes cannot be taken out of the exam room.\n\n"
-        "Learning Objectives\n"
-        "Upon achieving an acceptable score on this examination, you will have demonstrated the following key learning objectives of the Pediatric Clerkship Course:\n\n"
+    )
+    doc.add_paragraph(intro_text)
+    
+    # Add "Learning Objectives" in bold as its own paragraph
+    learning_obj_paragraph = doc.add_paragraph()
+    lo_run = learning_obj_paragraph.add_run("Learning Objectives")
+    lo_run.bold = True
+    
+    # Add the remaining instructions text
+    remaining_text = (
+        "\nUpon achieving an acceptable score on this examination, you will have demonstrated the following key learning objectives of the Pediatric Clerkship Course:\n\n"
         "• Obtain, synthesize, and interpret comprehensive medical histories for newborns, children, and adolescents in various clinical settings. (Patient Care 1.1, EPA 1)\n"
         "• Create an assessment, problem list, differential diagnosis, and management plan for common pediatric complaints. (Patient Care 1.2, EPA 2)\n"
         "• Integrate and adapt knowledge of growth and development to develop individualized pediatric care strategies that address physical, emotional, and psychosocial needs. (Patient Care 1.2)\n"
         "• Analyze social determinants of health, evaluate their impact on pediatric health outcomes, and formulate a plan to address these needs effectively. (Health Humanities 7.1, Systems Based Practice 6.4)\n\n"
         "Good luck, and let this be an opportunity to demonstrate the knowledge, skills, and professionalism you have cultivated throughout your clerkship."
     )
-    
-    # Add access instructions heading
-    paragraph = doc.add_paragraph()
-    paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    run = paragraph.add_run("Practical Examination Test Taking Instructions")
-    run.bold = True
-    run.underline = True
-    doc.add_paragraph(instructions)
+    doc.add_paragraph(remaining_text)
     
     return doc
 
