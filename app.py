@@ -11,7 +11,7 @@ def generate_document(student_name, code, exam_number):
     doc = Document()
     
     # Add heading for the specific practical examination
-    doc.add_heading(f'Pediatric Clerkship Practical Examination #{exam_number} Instructions', level=1)
+    doc.add_heading(f'Pediatric Clerkship Practical Examination #{exam_number}', level=1)
     
     # Add a paragraph with the student's legal name (with the name in bold)
     paragraph = doc.add_paragraph()
@@ -52,6 +52,12 @@ def generate_document(student_name, code, exam_number):
         "• Analyze social determinants of health, evaluate their impact on pediatric health outcomes, and formulate a plan to address these needs effectively. (Health Humanities 7.1, Systems Based Practice 6.4)\n\n"
         "Good luck, and let this be an opportunity to demonstrate the knowledge, skills, and professionalism you have cultivated throughout your clerkship."
     )
+    
+    # Add access instructions heading
+    paragraph = doc.add_paragraph()
+    run = paragraph.add_run("Practical Examination Test Taking Instructions: ")
+    run.bold = True
+    
     doc.add_paragraph(instructions)
     
     return doc
