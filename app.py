@@ -9,8 +9,8 @@ def generate_document(student_name, code_p1, code_p2):
     doc = Document()
     
     # Add headings for both practical examinations
-    doc.add_heading(f'Pediatric Clerkship Practical Examination #1 Instructions for {code_p1}', level=1)
-    doc.add_heading(f'Pediatric Clerkship Practical Examination #2 Instructions for {code_p2}', level=1)
+    doc.add_heading(f'Pediatric Clerkship Practical Examination #1 Instructions for {student_name}', level=1)
+    doc.add_heading(f'Pediatric Clerkship Practical Examination #2 Instructions for {student_name}', level=1)
     
     # Optionally add a paragraph that shows the student's legal name
     doc.add_paragraph(f"Student Name: {student_name}")
@@ -30,10 +30,9 @@ def generate_document(student_name, code_p1, code_p2):
         "Good luck, and let this be an opportunity to demonstrate the knowledge, skills, and professionalism you have cultivated throughout your clerkship."
     )
     doc.add_paragraph(instructions)
-    
-    # Add instructions on how to access the exam website
-    access_instructions = "Please first access https://redcap.ctsi.psu.edu/surveys and then enter your code."
-    doc.add_paragraph(access_instructions)
+        
+    doc.add_paragraph(f"Please first enter the following website: https://redcap.ctsi.psu.edu/surveys")
+    doc.add_paragraph(f"Please enter the following code {code_p1}")
     
     return doc
 
