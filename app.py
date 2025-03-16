@@ -35,8 +35,8 @@ def generate_document(student_name, code_p1, code_p2):
     doc.add_paragraph(instructions)
 
     paragraph = doc.add_paragraph()
-    paragraph.add_run("Practical Examination Access Instructions: ")  # Note the trailing space
-    run = paragraph.add_run(student_name)
+    paragraph.add_run("Practical Examination Access Instructions: ")  # trailing space for clarity
+    run = paragraph.add_run(str(student_name))
     run.bold = True
     
     doc.add_paragraph("1. Please first enter the following website: https://redcap.ctsi.psu.edu/surveys")
