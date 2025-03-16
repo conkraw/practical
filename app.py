@@ -9,11 +9,14 @@ def generate_document(student_name, code_p1, code_p2):
     doc = Document()
     
     # Add headings for both practical examinations
-    doc.add_heading(f'Pediatric Clerkship Practical Examination #1 Instructions for {student_name}', level=1)
-    doc.add_heading(f'Pediatric Clerkship Practical Examination #2 Instructions for {student_name}', level=1)
+    doc.add_heading(f'Pediatric Clerkship Practical Examination #1 Instructions', level=1)
+    doc.add_heading(f'Pediatric Clerkship Practical Examination #2 Instructions', level=1)
     
     # Optionally add a paragraph that shows the student's legal name
-    doc.add_paragraph(f"Student Name: {student_name}")
+    paragraph = doc.add_paragraph()
+    paragraph.add_run("Student Name: ")
+    run = paragraph.add_run(student_name)
+    run.bold = True
     
     # Add the main instructions text
     instructions = (
@@ -30,9 +33,14 @@ def generate_document(student_name, code_p1, code_p2):
         "Good luck, and let this be an opportunity to demonstrate the knowledge, skills, and professionalism you have cultivated throughout your clerkship."
     )
     doc.add_paragraph(instructions)
-        
-    doc.add_paragraph(f"Please first enter the following website: https://redcap.ctsi.psu.edu/surveys")
-    doc.add_paragraph(f"Please enter the following code {code_p1}")
+
+    paragraph = doc.add_paragraph()
+    paragraph.add_run("Practical Examination Access Instructions: ")  # Note the trailing space
+    run = paragraph.add_run(student_name)
+    run.bold = True
+    
+    doc.add_paragraph("1. Please first enter the following website: https://redcap.ctsi.psu.edu/surveys")
+    doc.add_paragraph(f"2. Please enter the following code {code_p1}")
     
     return doc
 
