@@ -43,14 +43,24 @@ def generate_document(student_name, code, exam_number):
     run.bold = True
     run.underline = True
     
-    # Add website access instruction
+    # Add website access instruction (step 1)
     doc.add_paragraph("1. Please first enter the following website: https://redcap.ctsi.psu.edu/surveys")
     
-    # Add code entry instruction with the code in bold
+    # Add code entry instruction with the code in bold (step 2)
     paragraph = doc.add_paragraph()
-    paragraph.add_run("2. Please enter the following code ")
-    run = paragraph.add_run(str(code))
-    run.bold = True
+    paragraph.add_run("2. Please enter the following code: ")
+    code_run = paragraph.add_run(str(code))
+    code_run.bold = True
+    
+    # Additional detailed instructions:
+    doc.add_paragraph("3. You may navigate backward and forward through the exam questions.")
+    doc.add_paragraph("4. If your computer fails, the exam should automatically save your last entered response. You can resume by clicking 'Next'.")
+    doc.add_paragraph("5. Once the exam is submitted, it cannot be reopened.")
+    doc.add_paragraph("6. You have 1 hour to complete the exam; a proctor will set the timer.")
+    doc.add_paragraph("7. An erasable noteboard will be provided for notes. All noteboards must be returned at the end of the exam.")
+    doc.add_paragraph("8. You are permitted to use the calculator app on your computer.")
+    doc.add_paragraph("9. Phones are not permitted.")
+    doc.add_paragraph("10. Screenshots or any form of screen capture of the exam content are strictly prohibited.")
 
     # Add access instructions heading
     paragraph = doc.add_paragraph()
