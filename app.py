@@ -43,66 +43,68 @@ def generate_document(student_name, code, exam_number):
     run.bold = True
     run.underline = True
     
-    # Add website access instruction (step 1)
-    doc.add_paragraph("1. Please first enter the following website: https://redcap.ctsi.psu.edu/surveys")
+    from docx.shared import Pt
+    from docx.enum.text import WD_ALIGN_PARAGRAPH
     
-    # Add code entry instruction with the code in bold (step 2)
+    # ---------------------------
+    # Exam Access Instructions
+    # ---------------------------
+    doc.add_paragraph("Exam Access Instructions", style='Heading2')
+    
+    # Step 1: Website URL
+    doc.add_paragraph("1. Visit the exam website: https://redcap.ctsi.psu.edu/surveys")
+    
+    # Step 2: Code Entry (with bold code)
     paragraph = doc.add_paragraph()
-    paragraph.add_run("2. Please enter the following code: ")
+    paragraph.add_run("2. Enter the exam code: ")
     code_run = paragraph.add_run(str(code))
     code_run.bold = True
     
-    # Additional detailed instructions:
-    doc.add_paragraph("3. You may navigate backward and forward through the exam questions.")
-    doc.add_paragraph("4. If your computer fails, the exam should automatically save your last entered response. You can resume by clicking 'Next'.")
+    # ---------------------------
+    # Test Taking Instructions
+    # ---------------------------
+    doc.add_paragraph("Test Taking Instructions", style='Heading2')
+    doc.add_paragraph("3. You can navigate backward and forward through the exam questions.")
+    doc.add_paragraph("4. If your computer fails, your last response will be saved automatically. Resume by clicking 'Next'.")
     doc.add_paragraph("5. Once the exam is submitted, it cannot be reopened.")
-    doc.add_paragraph("6. You have 1 hour to complete the exam; a proctor will set the timer.")
-    doc.add_paragraph("7. An erasable noteboard will be provided for notes. All noteboards must be returned at the end of the exam.")
-    doc.add_paragraph("8. You are permitted to use the calculator app on your computer.")
-    doc.add_paragraph("9. Phones are not permitted.")
-    doc.add_paragraph("10. Screenshots or any form of screen capture of the exam content are strictly prohibited.")
-
-    # Add access instructions heading
-    paragraph = doc.add_paragraph()
-    paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    run = paragraph.add_run("Practical Examination Test Taking Instructions")
-    run.bold = True
-    run.underline = True
+    doc.add_paragraph("6. You have 1 hour to complete the exam; a proctor will monitor the timer.")
+    doc.add_paragraph("7. Use the erasable noteboard provided. All noteboards must be returned at the end of the exam.")
+    doc.add_paragraph("8. The calculator app on your computer is permitted; phones are not allowed.")
+    doc.add_paragraph("9. Screenshots or any form of screen capture of the exam content are strictly prohibited.")
     
-    # Add the main instructions text (common for both exams)
-    # Add the introductory instructions
+    # ---------------------------
+    # Exam Overview / Introduction
+    # ---------------------------
     intro_text = (
         "Welcome to the Pediatric Clerkship Practical Examination!\n\n"
-        "This examination provides a unique opportunity to demonstrate your skills in biomedical knowledge, clinical reasoning, "
-        "and systems-based thinking as you engage with simulated cases involving undifferentiated pediatric patients.\n\n"
-        "You will be presented with prompts containing key details and asked to respond to specific questions. Please note that "
-        "all answers are required. While the system will not prompt you if an answer is left blank, your responses are mandatory "
-        "in order to proceed through the examination. Ensure that you fill in all required fields before moving forward (unless otherwise specified). "
-        "The purpose of this summative assessment is to evaluate your ability to synthesize data, interpret findings, and apply critical thinking in clinical decision-making.\n\n"
-        "All essential resources, including immunization schedules and pharmacologic references, will be provided to assist you in formulating your responses. "
-        "While you are welcome to take notes during the assessment, please note that these notes cannot be taken out of the exam room.\n"
+        "This exam offers you the opportunity to demonstrate your skills in biomedical knowledge, clinical reasoning, "
+        "and systems-based thinking as you work through simulated cases involving undifferentiated pediatric patients.\n\n"
+        "You will be presented with a series of questions. All fields must be completed to proceed. The purpose of this exam is "
+        "to assess your ability to synthesize data, interpret findings, and apply critical thinking in clinical decision-making.\n\n"
+        "All necessary resources, including immunization schedules and pharmacologic references, will be available during the exam. "
+        "Please note that any notes taken cannot be removed from the exam room."
     )
     intro_paragraph = doc.add_paragraph(intro_text)
-    intro_paragraph.paragraph_format.space_before = Pt(0)
     intro_paragraph.paragraph_format.space_after = Pt(0)
     
-    # Add "Learning Objectives" and the remaining instructions in one paragraph
+    # ---------------------------
+    # Learning Objectives
+    # ---------------------------
     paragraph = doc.add_paragraph()
     paragraph.paragraph_format.space_before = Pt(0)
     paragraph.paragraph_format.space_after = Pt(0)
-    #run_title = paragraph.add_run("Learning Objectives")
-    #run_title.bold = True
-    #run_title.add_break()  # Inserts a line break without creating an extra paragraph
-    run_remaining = paragraph.add_run(
-        #"Upon achieving an acceptable score on this examination, you will have demonstrated the following key learning objectives of the Pediatric Clerkship Course:\n\n"
-        #"• Obtain, synthesize, and interpret comprehensive medical histories for newborns, children, and adolescents in various clinical settings. (Patient Care 1.1, EPA 1)\n"
-        #"• Create an assessment, problem list, differential diagnosis, and management plan for common pediatric complaints. (Patient Care 1.2, EPA 2)\n"
-        #"• Integrate and adapt knowledge of growth and development to develop individualized pediatric care strategies that address physical, emotional, and psychosocial needs. (Patient Care 1.2)\n"
-        #"• Analyze social determinants of health, evaluate their impact on pediatric health outcomes, and formulate a plan to address these needs effectively. (Health Humanities 7.1, Systems Based Practice 6.4)\n\n"
-        "Good luck, and let this be an opportunity to demonstrate the knowledge, skills, and professionalism you have cultivated throughout your clerkship."
+    run_title = paragraph.add_run("Learning Objectives")
+    run_title.bold = True
+    run_title.add_break()  # Line break so that objectives start on the next line
+    
+    paragraph.add_run(
+        "• Demonstrate comprehensive medical history taking for patients of all ages.\n"
+        "• Formulate assessments, differential diagnoses, and management plans for common pediatric complaints.\n"
+        "• Apply knowledge of growth and development to create individualized pediatric care strategies.\n"
+        "• Evaluate social determinants of health and their impact on pediatric outcomes.\n\n"
+        "Good luck, and let this exam be an opportunity to showcase your professionalism and clinical expertise."
     )
-        
-    return doc
+
 
 st.title("Pediatric Clerkship Practical Examination Document Generator")
 
