@@ -19,7 +19,7 @@ def generate_document(student_name, code, exam_number):
     style = doc.styles['Normal']
     font = style.font
     font.name = 'Times New Roman'
-    font.size = Pt(11)
+    font.size = Pt(10)
     
     # Add heading for the specific practical examination
     
