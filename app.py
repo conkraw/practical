@@ -42,8 +42,6 @@ def generate_document(student_name, code, exam_number):
     run = paragraph.add_run("Examination Overview")
     run.bold = True
     run.underline = True
-
-    doc.add_paragraph(intro_text)
     
     # Add the main instructions text (common for both exams)
     # Add the introductory instructions
@@ -56,7 +54,9 @@ def generate_document(student_name, code, exam_number):
     "All necessary resources, including immunization schedules and pharmacologic references, will be available during the exam. "
     "Please note that any notes taken cannot be removed from the exam room."
     "Good luck, and let this be an opportunity to demonstrate the knowledge, skills, and professionalism you have cultivated throughout your clerkship.")
-    
+
+    intro_paragraph = doc.add_paragraph(intro_text)
+
     # Add access instructions heading
     paragraph = doc.add_paragraph()
     paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
