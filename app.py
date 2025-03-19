@@ -90,9 +90,9 @@ def generate_document(student_name, code, exam_number):
     paragraph = doc.add_paragraph()
     paragraph.paragraph_format.space_before = Pt(0)
     paragraph.paragraph_format.space_after = Pt(0)
-    run_title = paragraph.add_run("Learning Objectives")
-    run_title.bold = True
-    run_title.add_break()  # Inserts a line break without creating an extra paragraph
+    #run_title = paragraph.add_run("Learning Objectives")
+    #run_title.bold = True
+    #run_title.add_break()  # Inserts a line break without creating an extra paragraph
     run_remaining = paragraph.add_run(
         #"Upon achieving an acceptable score on this examination, you will have demonstrated the following key learning objectives of the Pediatric Clerkship Course:\n\n"
         #"• Obtain, synthesize, and interpret comprehensive medical histories for newborns, children, and adolescents in various clinical settings. (Patient Care 1.1, EPA 1)\n"
