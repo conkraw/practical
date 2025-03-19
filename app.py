@@ -51,9 +51,9 @@ def generate_document(student_name, code, exam_number):
     "and systems-based thinking as you work through simulated cases involving undifferentiated pediatric patients.\n\n"
     "You will be presented with a series of questions. All fields must be completed to proceed. The purpose of this exam is "
     "to assess your ability to synthesize data, interpret findings, and apply critical thinking in clinical decision-making.\n\n"
-    "All necessary resources, including immunization schedules and pharmacologic references, will be available during the exam. "
-    "Please note that any notes taken cannot be removed from the exam room."
-    "Good luck, and let this be an opportunity to demonstrate the knowledge, skills, and professionalism you have cultivated throughout your clerkship.")
+    "All necessary resources, including immunization schedules and pharmacologic references, will be available during the exam.\n\n"
+    "Please note that any notes taken cannot be removed from the exam room.\n\n"
+    "Good luck, and let this be an opportunity to demonstrate the knowledge, skills, and professionalism you have cultivated throughout your clerkship.\n\n")
 
     intro_paragraph = doc.add_paragraph(intro_text)
 
