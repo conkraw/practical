@@ -42,6 +42,8 @@ def generate_document(student_name, code, exam_number):
     run = paragraph.add_run("Examination Overview")
     run.bold = True
     run.underline = True
+
+    doc.add_paragraph(intro_text)
     
     # Add the main instructions text (common for both exams)
     # Add the introductory instructions
