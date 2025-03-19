@@ -39,72 +39,54 @@ def generate_document(student_name, code, exam_number):
     # Add access instructions heading
     paragraph = doc.add_paragraph()
     paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = paragraph.add_run("Examination Overview")
+    run.bold = True
+    run.underline = True
+    
+    # Add the main instructions text (common for both exams)
+    # Add the introductory instructions
+    intro_text = (
+    "Welcome to the Pediatric Clerkship Practical Examination!\n\n"
+    "This exam offers you the opportunity to demonstrate your skills in biomedical knowledge, clinical reasoning, "
+    "and systems-based thinking as you work through simulated cases involving undifferentiated pediatric patients.\n\n"
+    "You will be presented with a series of questions. All fields must be completed to proceed. The purpose of this exam is "
+    "to assess your ability to synthesize data, interpret findings, and apply critical thinking in clinical decision-making.\n\n"
+    "All necessary resources, including immunization schedules and pharmacologic references, will be available during the exam. "
+    "Please note that any notes taken cannot be removed from the exam room."
+    "Good luck, and let this be an opportunity to demonstrate the knowledge, skills, and professionalism you have cultivated throughout your clerkship.")
+    
+    # Add access instructions heading
+    paragraph = doc.add_paragraph()
+    paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
     run = paragraph.add_run("Practical Examination Access Instructions")
     run.bold = True
     run.underline = True
     
-    from docx.shared import Pt
-    from docx.enum.text import WD_ALIGN_PARAGRAPH
-    
-    # ---------------------------
-    # Exam Access Instructions
-    # ---------------------------
-    doc.add_paragraph("Exam Access Instructions", style='Heading2')
-    
-    # Step 1: Website URL
+    # Add website access instruction (step 1)
     doc.add_paragraph("1. Visit the exam website: https://redcap.ctsi.psu.edu/surveys")
     
-    # Step 2: Code Entry (with bold code)
+    # Add code entry instruction with the code in bold (step 2)
     paragraph = doc.add_paragraph()
     paragraph.add_run("2. Enter the exam code: ")
     code_run = paragraph.add_run(str(code))
     code_run.bold = True
-    
-    # ---------------------------
-    # Test Taking Instructions
-    # ---------------------------
-    doc.add_paragraph("Test Taking Instructions", style='Heading2')
-    doc.add_paragraph("3. You can navigate backward and forward through the exam questions.")
-    doc.add_paragraph("4. If your computer fails, your last response will be saved automatically. Resume by clicking 'Next'.")
-    doc.add_paragraph("5. Once the exam is submitted, it cannot be reopened.")
-    doc.add_paragraph("6. You have 1 hour to complete the exam; a proctor will monitor the timer.")
-    doc.add_paragraph("7. Use the erasable noteboard provided. All noteboards must be returned at the end of the exam.")
-    doc.add_paragraph("8. The calculator app on your computer is permitted; phones are not allowed.")
-    doc.add_paragraph("9. Screenshots or any form of screen capture of the exam content are strictly prohibited.")
-    
-    # ---------------------------
-    # Exam Overview / Introduction
-    # ---------------------------
-    intro_text = (
-        "Welcome to the Pediatric Clerkship Practical Examination!\n\n"
-        "This exam offers you the opportunity to demonstrate your skills in biomedical knowledge, clinical reasoning, "
-        "and systems-based thinking as you work through simulated cases involving undifferentiated pediatric patients.\n\n"
-        "You will be presented with a series of questions. All fields must be completed to proceed. The purpose of this exam is "
-        "to assess your ability to synthesize data, interpret findings, and apply critical thinking in clinical decision-making.\n\n"
-        "All necessary resources, including immunization schedules and pharmacologic references, will be available during the exam. "
-        "Please note that any notes taken cannot be removed from the exam room."
-    )
-    intro_paragraph = doc.add_paragraph(intro_text)
-    intro_paragraph.paragraph_format.space_after = Pt(0)
-    
-    # ---------------------------
-    # Learning Objectives
-    # ---------------------------
-    paragraph = doc.add_paragraph()
-    paragraph.paragraph_format.space_before = Pt(0)
-    paragraph.paragraph_format.space_after = Pt(0)
-    run_title = paragraph.add_run("Learning Objectives")
-    run_title.bold = True
-    run_title.add_break()  # Line break so that objectives start on the next line
-    
-    paragraph.add_run(
-        "• Demonstrate comprehensive medical history taking for patients of all ages.\n"
-        "• Formulate assessments, differential diagnoses, and management plans for common pediatric complaints.\n"
-        "• Apply knowledge of growth and development to create individualized pediatric care strategies.\n"
-        "• Evaluate social determinants of health and their impact on pediatric outcomes.\n\n"
-        "Good luck, and let this exam be an opportunity to showcase your professionalism and clinical expertise."
-    )
 
+     # Add access instructions heading
+    paragraph = doc.add_paragraph()
+    paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = paragraph.add_run("Test Taking Instructions")
+    run.bold = True
+    run.underline = True
+    
+    doc.add_paragraph("1. You can navigate backward and forward through the exam questions.")
+    doc.add_paragraph("2. If your computer fails, your last response will be saved automatically. Resume by clicking 'Next'.")
+    doc.add_paragraph("3. Once the exam is submitted, it cannot be reopened.")
+    doc.add_paragraph("4. You have 1 hour to complete the exam; a proctor will monitor the timer.")
+    doc.add_paragraph("5. Use the erasable noteboard provided. All noteboards must be returned at the end of the exam.")
+    doc.add_paragraph("6. The calculator app on your computer is permitted; phones are not allowed.")
+    doc.add_paragraph("7. Screenshots or any form of screen capture of the exam content are strictly prohibited.")
+        
+    return doc
 
 st.title("Pediatric Clerkship Practical Examination Document Generator")
 
